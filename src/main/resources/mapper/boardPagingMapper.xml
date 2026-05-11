@@ -13,6 +13,31 @@
 	    MENU_ID = #{menu_id}
 	</select>
 	
-	
+	<select id="getBoardPagingList">
+		SELECT
+			IDX,
+			TITLE,
+			WRITER,
+			TO_CHAR(REGDATE,'YYYY-MM-DD') REGDATE,
+			HIT	
+		FROM
+			BOARD
+		<where>
+		  <if test="menu_id != null and menu_id != '' ">
+	    	AND MENU_ID = #{menu_id}
+		  </if>
+		  <if test="title != null and title != '' ">
+	    	AND TITLE = #{title}
+		  </if>
+		  <if test="writer != null and writer != '' ">
+	    	AND WRITER = #{writer}
+		  </if>
+		  <if test="content != null and content != '' ">
+	    	AND CONTENT = #{content}
+		  </if>
+		</where>
+		ORDER BY IDX DESC
+		OFFSET #{offset} ROWS FETCH NEXT #{numOfRows} ROWS ONLY
+	</select>
 	
 </mapper>

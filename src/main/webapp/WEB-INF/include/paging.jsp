@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
+<style>
+#paging > table {width: 60%; margin: 0 auto; 
+	td{background-color: white; color: black; border-color: white;
+	  a{text-decoration: none; display: block; }}}
+</style>
 
 <c:set var="startnum" value="${searchDto.pagination.startPage}"/>
 <c:set var="endnum" value="${searchDto.pagination.endPage}"/>
@@ -11,6 +16,8 @@
      <c:if test="${startnum gt 1}">     
        <td>
          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=1"> 처음 </a>
+       </td>
+       <td>
          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${startnum-1}"> 이전 </a>
        </td>
      </c:if>
@@ -26,7 +33,9 @@
       <c:if test="${endnum lt totalpagecount}">     
        <td>
          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${endnum+1}"> 다음 </a>
-         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${totalpagecount}"> 마지막 </a>
+       </td>
+       <td>
+         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${totalpagecount}"> 마지막 </a>       
        </td>
      </c:if>
     </tr>

@@ -19,7 +19,7 @@
 </head>
 <body>
  <main>
- 	<%@include file = "/WEB-INF/include/menuspaging.jsp" %>
+ 	<%@ include file = "/WEB-INF/include/menuspaging.jsp" %>
  	<h2>${menu_name} 목록</h2>
  	<table class="table table-striped">
  	 <colgroup>
@@ -38,7 +38,7 @@
  	 </tr>	 
 	   <tr>
 	   	<td colspan="5" style="text-align: right; padding-right: 20px;">
-	   	[<a href="/Board/WriteForm?menu_id=${menu_id}">새 글 추가</a>]&nbsp;&nbsp;&nbsp;
+	   	[<a href="/BoardPaging/WriteForm?menu_id=${menu_id}&nowpage=${nowpage}">새 글 추가</a>]&nbsp;&nbsp;&nbsp;
 	   	[<a href="/">돌아가기</a>]
 	   	</td>
 	   </tr>
