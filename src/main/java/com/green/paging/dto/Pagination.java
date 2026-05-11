@@ -41,9 +41,19 @@ public class Pagination {
 		// 첫 페이지 계산
 		int pageSize = searchDto.getPageSize(); //한줄에 출력할 페이지 번호 수
 		startPage = ((pageNo - 1) / pageSize) * pageSize + 1;
+		
 		// 끝 페이지 계산
 		endPage = startPage + pageSize - 1;
 		
+		// limit 시작 위치계산
+		// limitStart = (pageNo - 1) * numOfRows;
+		limitStart = searchDto.getOffset();
+		
+		// 이전 페이지
+		existPrevPage = startPage > 1;
+		
+		// 다음 페이지
+		existNextPage = endPage < totalPageCount; 
 	}
 	
 }

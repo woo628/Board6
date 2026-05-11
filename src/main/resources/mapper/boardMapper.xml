@@ -16,7 +16,7 @@
 		    BOARD
 		WHERE
 	    MENU_ID = #{menu_id}
-		ORDER BY IDX ASC
+		ORDER BY IDX DESC
 	</select>
 	
 	<select id="getBoard">

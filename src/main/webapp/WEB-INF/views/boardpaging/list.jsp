@@ -52,6 +52,7 @@
 	   </tr>
 	   </c:forEach>
  	</table>
+ 	<%@ include file="/WEB-INF/include/paging.jsp" %>
  </main>
 </body>
 </html>
