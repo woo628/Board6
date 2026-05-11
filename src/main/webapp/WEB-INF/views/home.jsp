@@ -25,6 +25,9 @@
     <div><a href="/Board/List?menu_id=MENU01">게시글 목록</a></div>
     <div><a href="/Board/WriteForm?menu_id=MENU01">게시글 추가</a></div>
     <div>&nbsp;</div>
+    <div><a href="/BoardPaging/List?menu_id=MENU01&nowpage=1">게시글 목록(페이징)</a></div>
+    <div><a href="/BoardPaging/WriteForm?menu_id=MENU01&nowpage=1">게시글 추가(페이징)</a></div>
+    <div>&nbsp;</div>
     <div>
       <span style="font-weight: bold;">${sessionScope.login.username}</span> 님 환영합니다<br>
       당신의 가입일은 ${sessionScope.login.regdate} 입니다<br><br>
