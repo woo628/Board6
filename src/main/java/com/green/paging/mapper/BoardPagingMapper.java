@@ -12,5 +12,6 @@ public interface BoardPagingMapper {
 	List<BoardDto> getBoardPagingList(String menu_id, String searchType, String keyword, int offset, int numOfRows);
 
 	int count(BoardDto boardDto, String searchType, String keyword);
+
 	
 }

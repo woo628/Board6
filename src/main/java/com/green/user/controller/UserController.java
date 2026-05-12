@@ -85,13 +85,14 @@ public class UserController {
 	}
 	
 	@RequestMapping("/Login")
-	public String login(UserDTO userDTO, Model model, HttpSession session) {
+	public String login(UserDTO userDTO, HttpSession session) {
 		
 		UserDTO result = usermapper.finduser(userDTO);
+		String loc =session.getAttribute("loc") + "";
 	    
 	    if (result != null && result.getPasswd().equals(userDTO.getPasswd())) {
 	    	session.setAttribute("login", result);
-	        return "home";
+	        return "redirect:" + loc;
 	    } else {
 	        return "users/login";
 	    }
@@ -101,6 +102,11 @@ public class UserController {
 	public String logout(HttpSession session) {
 	    session.invalidate(); // Clears everything in the session
 	    return "home";
+	}
+	
+	@RequestMapping("/null")
+	public String null1() {
+		return "home";
 	}
 //----------------------------------------------------------------	
 	@RequestMapping("/AddForm")

@@ -18,7 +18,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 		// 로그인 대상 페이지
 		registry.addInterceptor(authInterceptor)
 		//	.addPathPatterns("/**") // 모든 파일 주소 /** 로
-			.addPathPatterns("/Board/**") // Board 밑에 있는 주소만 /** 로
+			.addPathPatterns("/Board/**","/BoardPaging/**") // Board 밑에 있는 주소만 /** 로
 			.excludePathPatterns("/css/**","/img/**","/js/**"); // 제외
 		WebMvcConfigurer.super.addInterceptors(registry);
 	}

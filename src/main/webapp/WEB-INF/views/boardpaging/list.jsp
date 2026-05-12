@@ -14,7 +14,7 @@
  tr:first-child {background-color: black; color: white;}
  main {margin-bottom: 150px;}
  .title {text-align: left; padding-left: 10px;}
- #search {width: 30%; margin: 10px auto;}
+ #search {width: 30%; margin: 10px auto; display: flex; gap: 10px;  justify-content: center;}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
 </head>
@@ -46,7 +46,7 @@
  	 <c:forEach var="board" items="${boardList}">
 	   <tr>
 	   	<td>${board.idx}</td>
-	   	<td class="title"><a href="/Board/View?idx=${board.idx}&menu_id=${menu_id}">${board.title}</a></td>
+	   	<td class="title"><a href="/BoardPaging/View?idx=${board.idx}&menu_id=${menu_id}&nowpage=${nowpage}">${board.title}</a></td>
 	   	<td>${board.writer}</td>
 	   	<td>${board.regdate}</td>
 	   	<td>${board.hit}</td>

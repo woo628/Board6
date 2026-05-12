@@ -24,7 +24,9 @@ public class AuthInterceptor implements HandlerInterceptor {
 			throws Exception {		
 		// 요청 주소
 		String requestURI = request.getRequestURI();
-		System.out.println(requestURI);
+		String qryStr =request.getQueryString(); // ? 뒤에있는 것들
+		String loc = requestURI + "?" + qryStr;
+		//System.out.println(requestURI);
 		
 		// loginform , login 제외
 		if (requestURI.contains("/Users/LoginForm")) {
@@ -36,7 +38,8 @@ public class AuthInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		// 사용자 로그인 정보를 세션 메모리에 user 로 저장
 		Object login = session.getAttribute("login");
-		System.out.println(login);
+		session.setAttribute("loc", loc);
+		//System.out.println(login);
 		if (login == null) {
 			// 로그인 되어 있지 않으니 로그인 페이지로 이동해라
 			response.sendRedirect("/Users/LoginForm");
