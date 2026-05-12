@@ -4,7 +4,8 @@
 <style>
 #paging > table {width: 60%; margin: 0 auto; 
 	td{background-color: white; color: black; border-color: white;
-	  a{text-decoration: none; display: block; }}}
+	  a{text-decoration: none; display: block; 
+	  &:hover{text-decoration: underline;}}}}
 </style>
 
 <c:set var="startnum" value="${searchDto.pagination.startPage}"/>
@@ -15,27 +16,29 @@
     <tr>
      <c:if test="${startnum gt 1}">     
        <td>
-         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=1"> 처음 </a>
+         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=1&searchType=${searchType}&keyword=${keyword}"> 처음 </a>
        </td>
        <td>
-         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${startnum-1}"> 이전 </a>
+         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${startnum-1}&searchType=${searchType}&keyword=${keyword}"> 이전 </a>
        </td>
      </c:if>
      
      <c:forEach var="pagenum" begin="${startnum}" end="${endnum}" step="1">
         <td>
-          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${pagenum}">
+          <c:if test="${pagenum le totalpagecount}">
+          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${pagenum}&searchType=${searchType}&keyword=${keyword}">
           ${pagenum}
           </a>
+          </c:if>
         </td>
      </c:forEach>
      
       <c:if test="${endnum lt totalpagecount}">     
        <td>
-         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${endnum+1}"> 다음 </a>
+         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${endnum+1}&searchType=${searchType}&keyword=${keyword}"> 다음 </a>
        </td>
        <td>
-         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${totalpagecount}"> 마지막 </a>       
+         <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${totalpagecount}&searchType=${searchType}&keyword=${keyword}"> 마지막 </a>       
        </td>
      </c:if>
     </tr>

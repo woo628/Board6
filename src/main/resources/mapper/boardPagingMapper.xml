@@ -9,13 +9,21 @@
 		    COUNT(IDX) AS CNT
 		FROM
 		    BOARD
-		WHERE
-	    MENU_ID = #{menu_id}
+		 <where>
+	    <if test="boardDto.menu_id != null and boardDto.menu_id != ''">
+	      AND MENU_ID = #{ boardDto.menu_id }   
+	    </if> 
+	    <if test="searchType != null and searchType != '' 
+	        and keyword != null and keyword != ''">
+	      AND ${searchType}  Like '%' || #{ keyword } || '%'   
+	    </if> 	   
+	  </where>
 	</select>
 	
 	<select id="getBoardPagingList">
 		SELECT
 			IDX,
+			MENU_ID,
 			TITLE,
 			WRITER,
 			TO_CHAR(REGDATE,'YYYY-MM-DD') REGDATE,
@@ -23,18 +31,8 @@
 		FROM
 			BOARD
 		<where>
-		  <if test="menu_id != null and menu_id != '' ">
-	    	AND MENU_ID = #{menu_id}
-		  </if>
-		  <if test="title != null and title != '' ">
-	    	AND TITLE = #{title}
-		  </if>
-		  <if test="writer != null and writer != '' ">
-	    	AND WRITER = #{writer}
-		  </if>
-		  <if test="content != null and content != '' ">
-	    	AND CONTENT = #{content}
-		  </if>
+		<if test="menu_id != null and menu_id != ''"> AND MENU_ID = #{menu_id } </if>
+		<if test="searchType != null and searchType != '' and keyword != null and keyword != ''"> AND ${searchType} Like '%' || #{ keyword } || '%' </if>
 		</where>
 		ORDER BY IDX DESC
 		OFFSET #{offset} ROWS FETCH NEXT #{numOfRows} ROWS ONLY
