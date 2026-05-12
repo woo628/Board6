@@ -103,11 +103,7 @@ public class UserController {
 	    session.invalidate(); // Clears everything in the session
 	    return "home";
 	}
-	
-	@RequestMapping("/null")
-	public String null1() {
-		return "home";
-	}
+
 //----------------------------------------------------------------	
 	@RequestMapping("/AddForm")
 	public String addform() {
