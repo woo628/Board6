@@ -6,6 +6,7 @@
 	td{background-color: white; color: black; border-color: white;
 	  a{text-decoration: none; display: block; 
 	  &:hover{text-decoration: underline;}}}}
+.active-page {font-weight: bold; color: black !important; text-decoration: underline;}
 </style>
 
 <c:set var="startnum" value="${searchDto.pagination.startPage}"/>
@@ -26,7 +27,8 @@
      <c:forEach var="pagenum" begin="${startnum}" end="${endnum}" step="1">
         <td>
           <c:if test="${pagenum le totalpagecount}">
-          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${pagenum}&searchType=${searchType}&keyword=${keyword}">
+          <a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${pagenum}&searchType=${searchType}&keyword=${keyword}"
+          class="${pagenum == searchDto.pageNo ? 'active-page' : ''}">
           ${pagenum}
           </a>
           </c:if>

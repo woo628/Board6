@@ -74,7 +74,12 @@ public class BoardPagingController {
 		List<MenuDTO> menuList = menuMapper.getMenuList();
 		BoardDto board = boardMapper.getBoard(boardDto);
 		String menu_name = menuMapper.getname(boardDto.getMenu_id());
-	
+		
+		// content 의 "\n" -> "<br>"
+		if (board.getContent() != null) {
+			board.setContent(board.getContent().replace("\n", "<br>"));			
+		}
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("boardpaging/view");
 		mv.addObject("menuList", menuList);
@@ -100,13 +105,13 @@ public class BoardPagingController {
 	}
 	
 	@RequestMapping("/Write")
-	public ModelAndView write(BoardDto boardDto, int nowpage) {
+	public ModelAndView write(BoardDto boardDto) {
 		String menu_id = boardDto.getMenu_id();
 		boardMapper.insertboard(boardDto);
 		
 		ModelAndView mv = new ModelAndView();
 		// redirect 쓸땐 addobject 안해도됨
-		mv.setViewName("redirect:/BoardPaging/List?menu_id=" + menu_id + "&nowpage=" + nowpage);
+		mv.setViewName("redirect:/BoardPaging/List?menu_id=" + menu_id + "&nowpage=1");
 		return mv;
 	}
 	

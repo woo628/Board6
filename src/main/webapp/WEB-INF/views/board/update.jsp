@@ -36,7 +36,7 @@
     	</tr>
     	<tr>
     	  <td>작성자</td>
-    	  <td>${board.title}</td>
+    	  <td>${board.writer}</td>
     	  <td>작성일</td>
     	  <td>${board.regdate}</td>
     	</tr>

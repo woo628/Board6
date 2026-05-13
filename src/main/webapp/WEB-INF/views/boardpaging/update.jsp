@@ -37,7 +37,7 @@
     	</tr>
     	<tr>
     	  <td>작성자</td>
-    	  <td>${board.title}</td>
+    	  <td>${board.writer}</td>
     	  <td>작성일</td>
     	  <td>${board.regdate}</td>
     	</tr>
@@ -46,7 +46,7 @@
    	<input type="text" name="title" value="${board.title}">
    	<p>내용</p> 
    	<textarea name="content">${board.content}</textarea><br>  
-   	<a href="/Board/List?menu_id=${menu_id}&nowpage=${nowpage}"><input type="button" value="돌아가기"></a>
+   	<a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${nowpage}"><input type="button" value="돌아가기"></a>
    	<input type="submit" value="수정">
    </form>
  </main>

@@ -28,7 +28,7 @@
    	<p>제목</p>
    	<input type="text" name="title" placeholder="제목을 입력하세요">
    	<p>작성자</p>
-   	<input type="text" name="writer">
+   	<input type="text" name="writer" value="${sessionScope.login.userid}">
    	<p>내용</p> 
    	<textarea name="content" placeholder="내용을 입력하세요"></textarea><br>  
    	<a href="/BoardPaging/List?menu_id=${menu_id}&nowpage=${nowpage}"><input type="button" value="돌아가기"></a>

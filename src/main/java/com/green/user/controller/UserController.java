@@ -88,10 +88,12 @@ public class UserController {
 	public String login(UserDTO userDTO, HttpSession session) {
 		
 		UserDTO result = usermapper.finduser(userDTO);
-		String loc =session.getAttribute("loc") + "";
+		Object savedLoc = session.getAttribute("loc");
+	    String loc = (savedLoc != null) ? savedLoc.toString() : "/"; // 값이 없으면 메인("/")으로
 	    
 	    if (result != null && result.getPasswd().equals(userDTO.getPasswd())) {
 	    	session.setAttribute("login", result);
+	    	session.removeAttribute("loc"); // 로그인 성공 후에는 저장된 loc를 세션에서 지워주는 것이 좋습니다 (재사용 방지)
 	        return "redirect:" + loc;
 	    } else {
 	        return "users/login";
